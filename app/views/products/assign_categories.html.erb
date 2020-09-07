@@ -1,0 +1,24 @@
+<div style="float: right;"> <%= link_to "Back",products_path()%></div>
+
+<%= form_for @product_category,url:{controller: "products",action: "assign_product_to_category"} do |form| %>
+  
+  <div class="field">
+    <%= form.label :product_id %>
+    <%= form.collection_select(:product_id,@products, :id, :name, {:prompt => 'Choose a product'}, {:required => true}) %>
+
+  </div>  
+
+  <div class="field">
+    <%= form.label :category_id %>
+    <%= form.collection_select(:category_id,@categories, :id, :name, {:prompt => 'Choose a category'}, {:required => true}) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+<%= render :partial => "product_category", :locals => { :product_categories => @product_categories } %>
+
+

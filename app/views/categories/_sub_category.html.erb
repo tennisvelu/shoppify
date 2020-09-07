@@ -1,0 +1,16 @@
+<table>
+	<tr>
+		<thead>
+			<td>Category Name</td>
+			<td>SubCategory Names</td>
+		</thead>	
+	</tr>
+	<tbody>
+		<%@categories.map do |category|%>
+			<tr>
+				<td><%= category.name%></td>
+				<td><%= category.categories.pluck(:name).join(",") if category.categories.present?%></td>
+			</tr>
+		<%end%>
+	</tbody>
+</table>
