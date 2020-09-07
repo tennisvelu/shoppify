@@ -6,10 +6,10 @@
 		</thead>	
 	</tr>
 	<tbody>
-		<%@categories.map do |category|%>
+		<%all_categories.map do |category|%>
 			<tr>
 				<td><%= category.name%></td>
-				<td><%= category.categories.pluck(:name).join(",") if category.categories.present?%></td>
+				<td><%= category.sub_categories.pluck(:name).join(",") if category.sub_categories.present?%></td>
 			</tr>
 		<%end%>
 	</tbody>

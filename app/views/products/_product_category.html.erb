@@ -6,7 +6,7 @@
 		</thead>
 	</tr>
 	<tbody>
-    <%@products.map do |product|%>
+    <%all_products.map do |product|%>
       <tr>
       	<td><%= product.name%></td>
       	<td><%= product.categories.pluck(:name).join(",") if product.categories.present?%></td>

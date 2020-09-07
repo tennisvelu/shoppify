@@ -73,7 +73,8 @@ class ProductsController < ApplicationController
       flash[:notice] = 'Product successfully assigned to Category.'       
       redirect_to assign_categories_products_url
     else
-      render :assign_categories
+      flash[:error] = 'Already assigned.'
+      redirect_to assign_categories_products_url
     end
   end  
 

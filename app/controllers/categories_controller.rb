@@ -68,19 +68,17 @@ class CategoriesController < ApplicationController
 
   def assign_category_to_sub_category
     @category_subcategory = CategorySubcategory.new(category_subcategory_params)
-    respond_to do |format|
-      if @category_subcategory.save
-        format.html { redirect_to assign_sub_category_categories_url, notice: 'Category successfully assigned to Subcategory.' }
-        format.json { render :show, status: :created, location: @category_subcategory }
-       else
-        format.html { render :assign_sub_category }
-        format.json { render json: @category_subcategory.errors, status: :unprocessable_entity }
-      end
-    end  
+    if @category_subcategory.save
+      flash[:notice] = 'Category successfully assigned to Subcategory.' 
+      redirect_to assign_sub_category_categories_url
+    else
+      flash[:notice] = "Can't able to Assign Subcategory"
+      redirect_to assign_sub_category_categories_path
+    end
   end 
 
   def sub_categories
-    @sub_categories = Category.find(params[:category_id]).categories
+    @sub_categories = Category.find(params[:category_id]).sub_categories
   end  
 
   private
