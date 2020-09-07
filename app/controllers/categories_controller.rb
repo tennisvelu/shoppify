@@ -78,7 +78,8 @@ class CategoriesController < ApplicationController
   end 
 
   def sub_categories
-    @sub_categories = Category.find(params[:category_id]).sub_categories
+    category = Category.find(params[:category_id])
+    @sub_categories = Category.sub_category(category)
   end  
 
   private

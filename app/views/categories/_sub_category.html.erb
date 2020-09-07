@@ -6,7 +6,7 @@
 		</thead>	
 	</tr>
 	<tbody>
-		<%all_categories.map do |category|%>
+		<%@categories.map do |category|%>
 			<tr>
 				<td><%= category.name%></td>
 				<td><%= category.sub_categories.pluck(:name).join(",") if category.sub_categories.present?%></td>
